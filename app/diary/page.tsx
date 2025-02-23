@@ -12,6 +12,8 @@ import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, MailOpen, Plus } f
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { format, isToday, addDays } from "date-fns";
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
+import { SearchInput } from "@/components/ui/search-input";
 
 const DiaryPage = () => {
     const [date, setDate] = React.useState<Date>(new Date());
@@ -54,9 +56,29 @@ const DiaryPage = () => {
                     </Button>
                 </div>
                 <div className="flex gap-4">
-                    <Button>
-                        <Plus /> Add food to diary
-                    </Button>
+                    <Drawer direction="right">
+                        <DrawerTrigger asChild>
+                            <Button>
+                                <Plus /> Add food to diary
+                            </Button>
+                        </DrawerTrigger>
+                        <DrawerContent>
+                            <DrawerHeader>
+                                <DrawerTitle>Are you absolutely sure?</DrawerTitle>
+                                <DrawerDescription>This action cannot be undone.</DrawerDescription>
+                            </DrawerHeader>
+                            <div className="p-4">
+                                <SearchInput />
+                            </div>
+                            <DrawerFooter>
+                                <Button>Submit</Button>
+                                <DrawerClose asChild>
+                                    <Button variant="outline">Cancel</Button>
+                                </DrawerClose>
+                            </DrawerFooter>
+                        </DrawerContent>
+                    </Drawer>
+
                     <Button>
                         <Plus /> Add note
                     </Button>
@@ -71,7 +93,7 @@ const DiaryPage = () => {
                     carbs={120}
                 />
 
-                <WeightTracker currentWeight={79.5} previousWeight={79.9} goalWeight={80} />
+                <WeightTracker currentWeight={69} previousWeight={79.9} goalWeight={80} />
             </div>
 
             <DiaryTable data={mockFoodEntries} />

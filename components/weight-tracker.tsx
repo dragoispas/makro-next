@@ -38,23 +38,14 @@ export default function WeightTracker({
     };
 
     return (
-        <Card className="w-full max-w-md p-4">
-            <CardHeader>
-                {currentWeight ? (
-                    <>
+        <Card className={`w-full max-w-md p-4 ${!currentWeight ? 'flex items-center justify-center' : ''}`}>
+            {currentWeight ? (
+                <>
+                    <CardHeader>
                         <CardTitle className="text-2xl font-bold text-center">{currentWeight} kg</CardTitle>
                         <p className="text-muted-foreground text-center">Current Weight</p>
-                    </>
-                ) : (
-                    <div className="flex flex-col items-center text-muted-foreground">
-                        <PlusCircle className="w-8 h-8 mb-2" />
-                        <p className="text-center">No weight recorded. Add your current weight to get started.</p>
-                    </div>
-                )}
-            </CardHeader>
+                    </CardHeader>
 
-            {currentWeight && (
-                <>
                     <Separator className="my-4" />
                     <CardContent className="space-y-4">
                         {goalWeight && (
@@ -72,6 +63,11 @@ export default function WeightTracker({
                         )}
                     </CardContent>
                 </>
+            ) : (
+                <div className="flex flex-col items-center text-muted-foreground">
+                    <PlusCircle className="w-8 h-8 mb-2" />
+                    <p className="text-center">No weight recorded. Add your current weight to get started.</p>
+                </div>
             )}
         </Card>
     );

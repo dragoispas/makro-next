@@ -2,10 +2,8 @@
 
 import * as React from "react"
 import {
-
     flexRender,
     getCoreRowModel,
-
     useReactTable,
 } from "@tanstack/react-table"
 
@@ -18,7 +16,8 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { FoodEntry } from "@/app/types"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
+import { PlusCircle } from "lucide-react";
 import { columns, FoodEntryRow } from "./columns"
 
 const getFoodEntryRows = (foodEntries: FoodEntry[]): FoodEntryRow[] =>
@@ -37,29 +36,31 @@ const getFoodEntryRows = (foodEntries: FoodEntry[]): FoodEntryRow[] =>
         };
     });
 
-export function DiaryTable({ data }: { data: FoodEntry[] }) {
-    const foodEntryRows = React.useMemo(() => getFoodEntryRows(data), [data]);
+export function DiaryTable({ data }: { data?: FoodEntry[] }) {
+    const foodEntryRows = React.useMemo(() => getFoodEntryRows(data || []), [data]);
 
     const table = useReactTable({
         data: foodEntryRows,
         columns,
         getCoreRowModel: getCoreRowModel(),
-    })
+    });
 
     return (
         <Card>
-            <CardHeader>
-                <CardTitle>Diary</CardTitle>
-                {/* <CardDescription>Card Description</CardDescription> */}
-            </CardHeader>
+            {foodEntryRows.length ?
+                <CardHeader>
+                    <CardTitle>Diary</CardTitle>
+                </CardHeader>
+                :
+                null
+            }
             <CardContent>
-
-                <Table>
-                    <TableHeader>
-                        {table.getHeaderGroups().map((headerGroup) => (
-                            <TableRow key={headerGroup.id}>
-                                {headerGroup.headers.map((header) => {
-                                    return (
+                {foodEntryRows.length ? (
+                    <Table>
+                        <TableHeader>
+                            {table.getHeaderGroups().map((headerGroup) => (
+                                <TableRow key={headerGroup.id}>
+                                    {headerGroup.headers.map((header) => (
                                         <TableHead key={header.id}>
                                             {header.isPlaceholder
                                                 ? null
@@ -68,14 +69,12 @@ export function DiaryTable({ data }: { data: FoodEntry[] }) {
                                                     header.getContext()
                                                 )}
                                         </TableHead>
-                                    )
-                                })}
-                            </TableRow>
-                        ))}
-                    </TableHeader>
-                    <TableBody>
-                        {table.getRowModel().rows?.length ? (
-                            table.getRowModel().rows.map((row) => (
+                                    ))}
+                                </TableRow>
+                            ))}
+                        </TableHeader>
+                        <TableBody>
+                            {table.getRowModel().rows.map((row) => (
                                 <TableRow
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
@@ -86,21 +85,16 @@ export function DiaryTable({ data }: { data: FoodEntry[] }) {
                                         </TableCell>
                                     ))}
                                 </TableRow>
-                            ))
-                        ) : (
-                            <TableRow>
-                                <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    No results.
-                                </TableCell>
-                            </TableRow>
-                        )}
-                    </TableBody>
-                </Table>
+                            ))}
+                        </TableBody>
+                    </Table>
+                ) : (
+                    <div className="flex flex-col items-center justify-center text-muted-foreground h-48">
+                        <PlusCircle className="w-10 h-10 mb-2" />
+                        <p className="text-center">No food entries found. Add one to the diary!</p>
+                    </div>
+                )}
             </CardContent>
-            {/* <CardFooter>
-          <p>Card Footer</p>
-        </CardFooter> */}
-
         </Card>
-    )
+    );
 }
