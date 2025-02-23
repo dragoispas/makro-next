@@ -20,7 +20,7 @@ const DiaryPage = () => {
     const handleNextDay = () => setDate((prev) => addDays(prev, 1));
 
     return (
-        <div className="container mx-auto py-10 flex flex-col gap-4">
+        <div className="container mx-auto py-10 px-4 flex flex-col gap-4">
 
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-4">
