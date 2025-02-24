@@ -1,19 +1,17 @@
 'use client';
 
-import { DiaryTable } from "@/components/data-table-demo/data-table";
-import { mockFoodEntries } from "../mockData";
+import { DiaryTable } from "@/components/diary-drawer/dary-table/data-table";
+import { mockFoodEntries, mockProducts } from "../mockData";
 import React from "react";
 import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MacroBreakdown from "@/components/macro-breakdown";
 import WeightTracker from "@/components/weight-tracker";
-import { Separator } from "@/components/ui/separator";
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, MailOpen, Plus } from "lucide-react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { format, isToday, addDays } from "date-fns";
-import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
-import { SearchInput } from "@/components/ui/search-input";
+import { DiaryDrawer } from "@/components/diary-drawer/diary-drawer";
 
 const DiaryPage = () => {
     const [date, setDate] = React.useState<Date>(new Date());
@@ -56,28 +54,7 @@ const DiaryPage = () => {
                     </Button>
                 </div>
                 <div className="flex gap-4">
-                    <Drawer direction="right">
-                        <DrawerTrigger asChild>
-                            <Button>
-                                <Plus /> Add food to diary
-                            </Button>
-                        </DrawerTrigger>
-                        <DrawerContent>
-                            <DrawerHeader>
-                                <DrawerTitle>Are you absolutely sure?</DrawerTitle>
-                                <DrawerDescription>This action cannot be undone.</DrawerDescription>
-                            </DrawerHeader>
-                            <div className="p-4">
-                                <SearchInput />
-                            </div>
-                            <DrawerFooter>
-                                <Button>Submit</Button>
-                                <DrawerClose asChild>
-                                    <Button variant="outline">Cancel</Button>
-                                </DrawerClose>
-                            </DrawerFooter>
-                        </DrawerContent>
-                    </Drawer>
+                    <DiaryDrawer />
 
                     <Button>
                         <Plus /> Add note

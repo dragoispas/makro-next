@@ -1,7 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "../ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "../../ui/dropdown-menu"
 import { MoreHorizontal } from "lucide-react"
-import { Button } from "../ui/button"
+import { Button } from "../../ui/button"
 
 export type FoodEntryRow = {
     id: number

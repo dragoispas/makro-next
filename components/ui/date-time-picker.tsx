@@ -14,8 +14,12 @@ import {
 } from "@/components/ui/popover";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-export function DateTimePicker24h() {
-    const [date, setDate] = React.useState<Date>(new Date());
+interface Props {
+    value: Date
+    onChange: (date: Date) => void
+}
+
+export function DateTimePicker24h({ value: date, onChange: setDate }: Props) {
     const [isOpen, setIsOpen] = React.useState(false);
 
     const hours = Array.from({ length: 24 }, (_, i) => i);

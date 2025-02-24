@@ -1,4 +1,4 @@
-import { DiaryTable } from "@/components/data-table-demo/data-table";
+import { DiaryTable } from "@/components/diary-drawer/dary-table/data-table";
 import { mockFoodEntries } from "../mockData";
 
 const FoodsPage = () => {

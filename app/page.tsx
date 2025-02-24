@@ -28,7 +28,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { CheckboxWithText } from "@/components/ui/checkbox-with-text";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { DiaryTable } from "@/components/data-table-demo/data-table";
+import { DiaryTable } from "@/components/diary-drawer/dary-table/data-table";
 import { mockFoodEntries } from "./mockData";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
@@ -86,7 +86,7 @@ export default function Home() {
       <Label>Label</Label>
       <CheckboxWithText info="Click this checkbox">Checkbox</CheckboxWithText>
       <Input />
-      <DateTimePicker24h />
+      {/* <DateTimePicker24h /> */}
       <Select>
         <SelectTrigger className="w-[180px]">
           <SelectValue placeholder="Theme" />
