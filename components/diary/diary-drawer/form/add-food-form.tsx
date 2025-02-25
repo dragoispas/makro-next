@@ -7,7 +7,7 @@ import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@
 import { DateTimePicker24h } from "@/components/ui/date-time-picker";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
 import { Product } from "@/app/types";
-import { ProductCard } from "./product-card-content";
+import { ProductCard } from "./product-card";
 
 const formSchema = z.object({
     timestamp: z.date(),

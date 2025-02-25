@@ -1,8 +1,8 @@
 import { Plus } from "lucide-react"
 import { Drawer, DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "../../ui/drawer"
-import { ProductSearch } from "./diary-product-search/product-search"
+import { ProductSearch } from "./search/product-search"
 import { Button } from "../../ui/button"
-import { DiaryDrawerContent } from "./diary-drawer-content"
+import { DiaryDrawerContent } from "./drawer-content"
 
 export const DiaryDrawer = () => {
     return (

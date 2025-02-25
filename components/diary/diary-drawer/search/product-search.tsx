@@ -6,7 +6,7 @@ import { ProductResults } from "./product-results";
 import { Product } from "@/app/types";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { AddFoodForm } from "./add-food-form";
+import { AddFoodForm } from "../form/add-food-form";
 
 export const ProductSearch = () => {
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -20,18 +20,18 @@ export const ProductSearch = () => {
     }, [searchTerm]);
 
     return (
-        <div className="flex flex-col gap-4 w-96">
+
+        <div className="flex flex-col gap-4 w-96 p-4 overflow-auto">
             <SearchInput value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
             {selectedProduct ? (
                 <div className="flex flex-col gap-4 w-full">
                     <AddFoodForm selectedProduct={selectedProduct} />
                     <Button onClick={() => setSelectedProduct(null)} variant="outline">Cancel</Button>
-                    {/* <Button onClick={handleAddProduct}>Add Product</Button>
-                    <Button variant="outline" onClick={() => setSelectedProduct(null)}>Back to Search</Button> */}
                 </div>
             ) : (
                 <ProductResults products={searchResults} setSelectedProduct={setSelectedProduct} />
             )}
         </div>
+
     );
 };

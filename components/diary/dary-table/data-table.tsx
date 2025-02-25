@@ -16,7 +16,7 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { FoodEntry } from "@/app/types"
-import { Card, CardContent, CardHeader, CardTitle } from "../../../ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card"
 import { PlusCircle } from "lucide-react";
 import { columns, FoodEntryRow } from "./columns"
 

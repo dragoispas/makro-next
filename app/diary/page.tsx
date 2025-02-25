@@ -1,6 +1,6 @@
 'use client';
 
-import { DiaryTable } from "@/components/diary/diary-drawer/dary-table/data-table";
+import { DiaryTable } from "@/components/diary/dary-table/data-table";
 import { mockFoodEntries } from "../mockData";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,8 +8,9 @@ import MacroBreakdown from "@/components/diary/macro-breakdown";
 import WeightTracker from "@/components/diary/weight-tracker";
 import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { DiaryDrawer } from "@/components/diary/diary-drawer/diary-drawer";
+import { DiaryDrawer } from "@/components/diary/diary-drawer/drawer";
 import { DiaryDatePicker } from "@/components/diary/diary-date-picker";
+import { NotesDrawer } from "@/components/diary/notes-drawer/drawer";
 
 const DiaryPage = () => {
     const [date, setDate] = React.useState<Date>(new Date());
@@ -22,9 +23,7 @@ const DiaryPage = () => {
                 <div className="flex gap-4">
                     <DiaryDrawer />
 
-                    <Button>
-                        <Plus /> Add note
-                    </Button>
+                    <NotesDrawer />
                 </div>
             </div>
 

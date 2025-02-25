@@ -28,7 +28,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { CheckboxWithText } from "@/components/ui/checkbox-with-text";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { DiaryTable } from "@/components/diary/diary-drawer/dary-table/data-table";
+import { DiaryTable } from "@/components/diary/dary-table/data-table";
 import { mockFoodEntries } from "./mockData";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 
