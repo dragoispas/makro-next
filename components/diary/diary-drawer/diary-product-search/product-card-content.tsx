@@ -1,5 +1,5 @@
 import { Product } from "@/app/types";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 import calculatedFoodDetails from "@/components/utils";
 import { useMemo } from "react";
@@ -53,40 +53,44 @@ export const ProductCard = ({ selectedProduct, quantity, multiplier }: Props) =>
             <CardContent>
                 <div className="flex gap-6 align-center justify-center">
                     {/* Pie chart */}
-                    <div className="w-28 h-28 relative">
-                        <div className="flex flex-col items-center justify-center absolute w-full h-full">
-                            <div className="text-sm font-semibold translate-y-0.5">{macronutrients.calories}</div>
-                            <div className="text-sm font-semibold -translate-y-0.5">kcal</div>
+                    <div className="w-32 flex justify-end">
+                        <div className="w-28 h-28 relative">
+                            <div className="flex flex-col items-center justify-center absolute w-full h-full">
+                                <div className="text-sm font-semibold translate-y-0.5">{macronutrients.calories}</div>
+                                <div className="text-sm font-semibold -translate-y-0.5">kcal</div>
+                            </div>
+                            <ChartContainer config={chartConfig} className="w-full h-full">
+                                <PieChart>
+                                    <Pie
+                                        data={chartData}
+                                        dataKey="value"
+                                        nameKey="name"
+                                        cx="50%"
+                                        cy="50%"
+                                        innerRadius={30}
+                                        outerRadius={50}
+                                        fill="#8884d8"
+                                        paddingAngle={4}
+                                    />
+                                </PieChart>
+                            </ChartContainer>
                         </div>
-                        <ChartContainer config={chartConfig} className="w-full h-full">
-                            <PieChart>
-                                <Pie
-                                    data={chartData}
-                                    dataKey="value"
-                                    nameKey="name"
-                                    cx="50%"
-                                    cy="50%"
-                                    innerRadius={30}
-                                    outerRadius={50}
-                                    fill="#8884d8"
-                                    paddingAngle={4}
-                                />
-                            </PieChart>
-                        </ChartContainer>
                     </div>
 
-                    <div className="flex flex-col gap-2 align-center justify-center">
-                        <div className="flex gap-2 align-center justify-center">
-                            <div className="w-2 h-2 bg-macro-protein rounded-full self-center"></div>
-                            <p className="text-sm font-semibold">Protein: {macronutrients.protein} g</p>
-                        </div>
-                        <div className="flex gap-2 align-center">
-                            <div className="w-2 h-2 bg-macro-fat rounded-full self-center"></div>
-                            <p className="text-sm font-semibold">Fat: {macronutrients.fat} g</p>
-                        </div>
-                        <div className="flex gap-2 align-center">
-                            <div className="w-2 h-2 bg-macro-carbs rounded-full self-center"></div>
-                            <p className="text-sm font-semibold">Carbs: {macronutrients.carbs} g</p>
+                    <div className="w-32">
+                        <div className="flex flex-col gap-2 align-baseline justify-center h-full w-32">
+                            <div className="flex gap-2 align-center">
+                                <div className="w-2 h-2 bg-macro-protein rounded-full self-center"></div>
+                                <p className="text-sm font-semibold">Protein: {macronutrients.protein} g</p>
+                            </div>
+                            <div className="flex gap-2 align-center">
+                                <div className="w-2 h-2 bg-macro-fat rounded-full self-center"></div>
+                                <p className="text-sm font-semibold">Fat: {macronutrients.fat} g</p>
+                            </div>
+                            <div className="flex gap-2 align-center">
+                                <div className="w-2 h-2 bg-macro-carbs rounded-full self-center"></div>
+                                <p className="text-sm font-semibold">Carbs: {macronutrients.carbs} g</p>
+                            </div>
                         </div>
                     </div>
                 </div>

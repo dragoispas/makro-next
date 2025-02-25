@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import { DateTimePicker24h } from "@/components/ui/date-time-picker";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
-import { useState } from "react";
 import { Product } from "@/app/types";
 import { ProductCard } from "./product-card-content";
 
@@ -17,22 +16,20 @@ const formSchema = z.object({
 });
 
 interface Props {
-    onQuantityChange: (quantity: string) => void;
     selectedProduct: Product;
 }
 
-export function AddFoodForm({ onQuantityChange, selectedProduct }: Props) {
+export function AddFoodForm({ selectedProduct }: Props) {
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
             timestamp: new Date(),
-            quantity: "1",
+            quantity: "0",
             servingSize: selectedProduct.servingSizes[0].name,
         },
     });
     function onSubmit(values: z.infer<typeof formSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
+        // api call
         console.log(values)
     }
 
@@ -64,7 +61,7 @@ export function AddFoodForm({ onQuantityChange, selectedProduct }: Props) {
                                 <FormItem>
                                     <FormLabel>Quantity</FormLabel>
                                     <FormControl>
-                                        <Input type="number" {...field} min={1} onChange={e => { field.onChange(e); onQuantityChange(e.target.value); }} />
+                                        <Input type="number" {...field} min={1} />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
@@ -85,7 +82,7 @@ export function AddFoodForm({ onQuantityChange, selectedProduct }: Props) {
                                             <SelectContent>
                                                 {selectedProduct.servingSizes.map((servingSize) => (
                                                     <SelectItem key={servingSize.name} value={servingSize.name}>
-                                                        {servingSize.name}
+                                                        {servingSize.name !== 'g' ? `${servingSize.name} - ${servingSize.multiplier} g` : 'g'}
                                                     </SelectItem>
                                                 ))}
                                             </SelectContent>

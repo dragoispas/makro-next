@@ -1,5 +1,4 @@
-import { Button } from "@/components/ui/button"
-import { DrawerClose, DrawerContent, DrawerFooter, DrawerHeader, DrawerTitle } from "@/components/ui/drawer"
+import { DrawerContent, DrawerHeader, DrawerTitle } from "@/components/ui/drawer"
 import { ProductSearch } from "./diary-product-search/product-search"
 
 export const DiaryDrawerContent = () => {
