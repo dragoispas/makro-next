@@ -1,8 +1,8 @@
 "use client";
 
 import { Product } from "@/app/types";
-import { ScrollArea } from "../../ui/scroll-area";
-import { Separator } from "../../ui/separator";
+import { ScrollArea } from "../../../ui/scroll-area";
+import { Separator } from "../../../ui/separator";
 import { useState } from "react";
 
 interface Props {

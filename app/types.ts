@@ -3,7 +3,13 @@ export type Product = {
     name: string,
     calories: number,
     macronutrients: Makros,
+    servingSizes: ServingSize[],
     source: string,
+}
+
+export type ServingSize = {
+    name: string,
+    multiplier: number,
 }
 
 export type Makros = {

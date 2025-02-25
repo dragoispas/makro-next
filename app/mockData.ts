@@ -3,21 +3,26 @@ import { format, subDays } from "date-fns";
 
 // Mock Products
 export const mockProducts: Product[] = [
-    { id: 1, name: "Chicken Breast", calories: 165, macronutrients: { protein: 31, fat: 3.6, carbs: 0 }, source: "USDA" },
-    { id: 2, name: "Salmon", calories: 208, macronutrients: { protein: 25, fat: 13, carbs: 0 }, source: "USDA" },
-    { id: 3, name: "Eggs", calories: 155, macronutrients: { protein: 13, fat: 10, carbs: 1 }, source: "USDA" },
-    { id: 4, name: "Greek Yogurt", calories: 100, macronutrients: { protein: 10, fat: 5, carbs: 4 }, source: "USDA" },
-    { id: 5, name: "Oats", calories: 389, macronutrients: { protein: 11, fat: 5, carbs: 67 }, source: "USDA" },
-    { id: 6, name: "Banana", calories: 89, macronutrients: { protein: 1.3, fat: 0.3, carbs: 27 }, source: "USDA" },
-    { id: 7, name: "Almonds", calories: 579, macronutrients: { protein: 21, fat: 49, carbs: 22 }, source: "USDA" },
-    { id: 8, name: "Avocado", calories: 160, macronutrients: { protein: 2, fat: 15, carbs: 9 }, source: "USDA" },
-    { id: 9, name: "Broccoli", calories: 55, macronutrients: { protein: 3.7, fat: 0.6, carbs: 11 }, source: "USDA" },
-    { id: 10, name: "Brown Rice", calories: 123, macronutrients: { protein: 2.7, fat: 1, carbs: 25.6 }, source: "USDA" },
-    { id: 11, name: "Apple", calories: 52, macronutrients: { protein: 0.3, fat: 0.2, carbs: 14 }, source: "USDA" },
-    { id: 12, name: "Carrot", calories: 41, macronutrients: { protein: 0.9, fat: 0.2, carbs: 10 }, source: "USDA" },
-    { id: 13, name: "Spinach", calories: 23, macronutrients: { protein: 2.9, fat: 0.4, carbs: 3.6 }, source: "USDA" },
-    { id: 14, name: "Sweet Potato", calories: 86, macronutrients: { protein: 1.6, fat: 0.1, carbs: 20 }, source: "USDA" },
-    { id: 15, name: "Quinoa", calories: 120, macronutrients: { protein: 4.1, fat: 1.9, carbs: 21.3 }, source: "USDA" },
+    { id: 1, name: "Chicken Breast", calories: 165, macronutrients: { protein: 31, fat: 3.6, carbs: 0 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "large", multiplier: 135 }, { name: "cup", multiplier: 245 }], source: "USDA" },
+    { id: 2, name: "Salmon", calories: 208, macronutrients: { protein: 25, fat: 13, carbs: 0 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "fillet", multiplier: 356 }], source: "USDA" },
+    { id: 3, name: "Eggs", calories: 155, macronutrients: { protein: 13, fat: 10, carbs: 1 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "piece", multiplier: 50 }], source: "USDA" },
+    { id: 4, name: "Greek Yogurt", calories: 100, macronutrients: { protein: 10, fat: 5, carbs: 4 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 245 }], source: "USDA" },
+    { id: 5, name: "Oats", calories: 389, macronutrients: { protein: 11, fat: 5, carbs: 67 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 81 }], source: "USDA" },
+    { id: 6, name: "Banana", calories: 89, macronutrients: { protein: 1.3, fat: 0.3, carbs: 27 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "piece", multiplier: 118 }], source: "USDA" },
+    { id: 7, name: "Almonds", calories: 579, macronutrients: { protein: 21, fat: 49, carbs: 22 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 143 }], source: "USDA" },
+    { id: 8, name: "Avocado", calories: 160, macronutrients: { protein: 2, fat: 15, carbs: 9 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "piece", multiplier: 201 }], source: "USDA" },
+    { id: 9, name: "Broccoli", calories: 55, macronutrients: { protein: 3.7, fat: 0.6, carbs: 11 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 91 }], source: "USDA" },
+    { id: 10, name: "Brown Rice", calories: 123, macronutrients: { protein: 2.7, fat: 1, carbs: 25.6 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 195 }], source: "USDA" },
+    { id: 11, name: "Apple", calories: 52, macronutrients: { protein: 0.3, fat: 0.2, carbs: 14 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "piece", multiplier: 182 }], source: "USDA" },
+    { id: 12, name: "Carrot", calories: 41, macronutrients: { protein: 0.9, fat: 0.2, carbs: 10 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "piece", multiplier: 61 }], source: "USDA" },
+    { id: 13, name: "Spinach", calories: 23, macronutrients: { protein: 2.9, fat: 0.4, carbs: 3.6 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 30 }], source: "USDA" },
+    { id: 14, name: "Sweet Potato", calories: 86, macronutrients: { protein: 1.6, fat: 0.1, carbs: 20 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "piece", multiplier: 130 }], source: "USDA" },
+    { id: 15, name: "Quinoa", calories: 120, macronutrients: { protein: 4.1, fat: 1.9, carbs: 21.3 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 185 }], source: "USDA" },
+    { id: 16, name: "Peanut Butter", calories: 588, macronutrients: { protein: 25, fat: 50, carbs: 20 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "tbsp", multiplier: 16 }], source: "USDA" },
+    { id: 17, name: "Tofu", calories: 76, macronutrients: { protein: 8, fat: 4.8, carbs: 1.9 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "block", multiplier: 349 }], source: "USDA" },
+    { id: 18, name: "Blueberries", calories: 57, macronutrients: { protein: 0.7, fat: 0.3, carbs: 14 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 148 }], source: "USDA" },
+    { id: 19, name: "Cottage Cheese", calories: 98, macronutrients: { protein: 11, fat: 4.3, carbs: 3.4 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 210 }], source: "USDA" },
+    { id: 20, name: "Strawberries", calories: 32, macronutrients: { protein: 0.7, fat: 0.3, carbs: 7.7 }, servingSizes: [{ name: "g", multiplier: 1 }, { name: "cup", multiplier: 152 }], source: "USDA" }
 ];
 
 // Mock Food Entries

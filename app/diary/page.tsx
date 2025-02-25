@@ -1,58 +1,24 @@
 'use client';
 
-import { DiaryTable } from "@/components/diary-drawer/dary-table/data-table";
-import { mockFoodEntries, mockProducts } from "../mockData";
+import { DiaryTable } from "@/components/diary/diary-drawer/dary-table/data-table";
+import { mockFoodEntries } from "../mockData";
 import React from "react";
-import { Calendar } from "@/components/ui/calendar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import MacroBreakdown from "@/components/macro-breakdown";
-import WeightTracker from "@/components/weight-tracker";
-import { ChevronLeft, ChevronRight, Calendar as CalendarIcon, MailOpen, Plus } from "lucide-react";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import MacroBreakdown from "@/components/diary/macro-breakdown";
+import WeightTracker from "@/components/diary/weight-tracker";
+import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { format, isToday, addDays } from "date-fns";
-import { DiaryDrawer } from "@/components/diary-drawer/diary-drawer";
+import { DiaryDrawer } from "@/components/diary/diary-drawer/diary-drawer";
+import { DiaryDatePicker } from "@/components/diary/diary-date-picker";
 
 const DiaryPage = () => {
     const [date, setDate] = React.useState<Date>(new Date());
-
-    const handlePrevDay = () => setDate((prev) => addDays(prev, -1));
-    const handleNextDay = () => setDate((prev) => addDays(prev, 1));
 
     return (
         <div className="container mx-auto py-10 px-4 flex flex-col gap-4">
 
             <div className="flex justify-between items-center">
-                <div className="flex items-center gap-4">
-                    <Button variant="ghost" onClick={handlePrevDay}>
-                        <ChevronLeft className="w-6 h-6" />
-                    </Button>
-
-                    <Popover>
-                        <PopoverTrigger asChild>
-                            <div className="cursor-pointer flex flex-col items-center">
-
-                                <span className="text-xl font-bold">
-                                    {isToday(date) ? 'Today' : format(date, 'dd MMM yyyy')}
-                                </span>
-                            </div>
-                        </PopoverTrigger>
-                        <PopoverContent className="w-auto p-0">
-                            <Calendar
-                                mode="single"
-                                selected={date}
-                                onSelect={(selectedDate) => {
-                                    if (selectedDate) setDate(selectedDate);
-                                }}
-                                initialFocus
-                            />
-                        </PopoverContent>
-                    </Popover>
-
-                    <Button variant="ghost" onClick={handleNextDay}>
-                        <ChevronRight className="w-6 h-6" />
-                    </Button>
-                </div>
+                <DiaryDatePicker date={date} setDate={setDate} />
                 <div className="flex gap-4">
                     <DiaryDrawer />
 
