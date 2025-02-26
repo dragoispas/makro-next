@@ -1,21 +1,11 @@
-'use client';
 
-import Image from "next/image";
 import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar";
 import React from "react";
 import { Input } from "@/components/ui/input";
-import { InputWithLabel } from "@/components/ui/input-with-label";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
-import { DatePicker } from "@/components/ui/date-picker";
-import { DateTimePicker24h } from "@/components/ui/date-time-picker";
 import { toast } from "sonner";
-import { Command } from "lucide-react";
 import { SearchInput } from "@/components/ui/search-input";
 import { ChartContainer, ChartLegend, ChartTooltip } from "@/components/ui/chart";
-import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-import Link from "next/link";
-import { cn } from "@/components/ui/lib/utils";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { Pagination, PaginationContent, PaginationItem, PaginationPrevious, PaginationLink, PaginationEllipsis, PaginationNext } from "@/components/ui/pagination";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -24,7 +14,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Textarea } from "@/components/ui/textarea";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import { CheckboxWithText } from "@/components/ui/checkbox-with-text";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -33,7 +22,8 @@ import { mockFoodEntries } from "./mockData";
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer";
 
 export default function Home() {
-  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
+  // const [date, setDate] = React.useState<Date | undefined>(new Date());
   const data = [
     { name: "Jan", value: 400 },
     { name: "Feb", value: 300 },
@@ -70,8 +60,8 @@ export default function Home() {
         </DrawerContent>
       </Drawer>
 
-      <Button onClick={() => toast("Event has been created.")}>Button</Button>
-      <Card className="align-self-start">
+      {/* <Button onClick={() => toast("Event has been created.")}>Button</Button> */}
+      {/* <Card className="align-self-start">
         <Calendar
           mode="single"
           selected={date}
@@ -81,7 +71,7 @@ export default function Home() {
             }
           }}
         />
-      </Card>
+      </Card> */}
       <Label>Label</Label>
       <CheckboxWithText info="Click this checkbox">Checkbox</CheckboxWithText>
       <Input />
@@ -96,7 +86,7 @@ export default function Home() {
           <SelectItem value="system">System</SelectItem>
         </SelectContent>
       </Select>
-      <Textarea />
+      {/* <Textarea /> */}
 
       <Card>
         <CardHeader>
@@ -144,7 +134,7 @@ export default function Home() {
         <DiaryTable data={mockFoodEntries} />
       </div>
 
-      <ChartContainer config={chartConfig}>
+      {/* <ChartContainer config={chartConfig}>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
@@ -153,7 +143,7 @@ export default function Home() {
           <ChartLegend />
           <Line type="monotone" dataKey="value" stroke="var(--color-line)" dot={{ r: 2 }} />
         </LineChart>
-      </ChartContainer>
+      </ChartContainer> */}
       <HoverCard>
         <HoverCardTrigger>Hover</HoverCardTrigger>
         <HoverCardContent>

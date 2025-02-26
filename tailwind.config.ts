@@ -9,6 +9,18 @@ export default {
 	],
 	theme: {
 		extend: {
+			width: {
+				104: '26rem',
+				112: "28rem",
+				128: "32rem",
+				144: "36rem",
+				169: "40rem",
+				176: "44rem",
+				192: "48rem",
+				208: "52rem",
+				224: "56rem",
+				256: "64rem",
+			},
 			colors: {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',

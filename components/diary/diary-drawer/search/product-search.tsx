@@ -21,12 +21,12 @@ export const ProductSearch = () => {
 
     return (
 
-        <div className="flex flex-col gap-4 w-96 p-4 overflow-auto">
+        <div className="flex flex-col gap-4 w-104 p-4 overflow-auto">
             <SearchInput value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
             {selectedProduct ? (
                 <div className="flex flex-col gap-4 w-full">
                     <AddFoodForm selectedProduct={selectedProduct} />
-                    <Button onClick={() => setSelectedProduct(null)} variant="outline">Cancel</Button>
+                    <Button onClick={() => setSelectedProduct(null)} variant="outline">Back to Search</Button>
                 </div>
             ) : (
                 <ProductResults products={searchResults} setSelectedProduct={setSelectedProduct} />

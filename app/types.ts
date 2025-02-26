@@ -2,7 +2,7 @@ export type Product = {
     id: number,
     name: string,
     calories: number,
-    macronutrients: Makros,
+    macronutrients: Macros,
     servingSizes: ServingSize[],
     source: string,
 }
@@ -12,7 +12,7 @@ export type ServingSize = {
     multiplier: number,
 }
 
-export type Makros = {
+export type Macros = {
     protein: number,
     fat: number,
     carbs: number,

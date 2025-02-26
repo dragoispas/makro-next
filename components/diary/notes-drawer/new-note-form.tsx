@@ -35,7 +35,7 @@ export const NewNoteForm = () => {
     }
 
     return (
-        <div className="w-96 p-4 h-full">
+        <div className="w-104 p-4 h-full">
             <Form {...form}>
                 <form onSubmit={form.handleSubmit((values) => onSubmit(values))} className="space-y-4 flex flex-col gap-2">
                     <FormField
