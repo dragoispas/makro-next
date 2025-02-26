@@ -1,3 +1,5 @@
+"use client";
+
 import { Product } from "@/app/types";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer } from "@/components/ui/chart";

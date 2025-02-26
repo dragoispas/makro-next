@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { Product } from "@/app/types"
+import Link from "next/link"
 
 export const columns: ColumnDef<Product>[] = [
     {
@@ -86,7 +87,9 @@ export const columns: ColumnDef<Product>[] = [
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                        <DropdownMenuItem>View food</DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Link href={`/foods/${product.id}`}>View food</Link>
+                        </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem>Create custom "{row.original.name.toLowerCase()}"</DropdownMenuItem>
                     </DropdownMenuContent>
