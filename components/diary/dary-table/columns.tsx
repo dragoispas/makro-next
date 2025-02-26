@@ -1,5 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "../../ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../../ui/dropdown-menu"
 import { MoreHorizontal } from "lucide-react"
 import { Button } from "../../ui/button"
 
@@ -42,7 +42,7 @@ export const columns: ColumnDef<FoodEntryRow>[] = [
         id: "actions",
         enableHiding: false,
         cell: ({ row }) => {
-            const payment = row.original
+            const foodEntry = row.original
 
             return (
                 <DropdownMenu>
@@ -55,6 +55,7 @@ export const columns: ColumnDef<FoodEntryRow>[] = [
                     <DropdownMenuContent align="end">
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem>Edit</DropdownMenuItem>
+                        <DropdownMenuSeparator />
                         <DropdownMenuItem>Delete</DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
