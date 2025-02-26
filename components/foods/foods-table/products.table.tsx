@@ -29,12 +29,17 @@ import {
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { mockProducts } from "@/app/mockData"
 import { columns } from "./columns"
+import { Pagination } from "@/components/ui/pagination"
 
 export function ProductsTable() {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
+    const [pagination, setPagination] = React.useState({
+        pageIndex: 0, // Start at first page
+        pageSize: 10, // Default rows per page
+    });
 
     const table = useReactTable({
         data: mockProducts,
@@ -47,11 +52,13 @@ export function ProductsTable() {
         getFilteredRowModel: getFilteredRowModel(),
         onColumnVisibilityChange: setColumnVisibility,
         onRowSelectionChange: setRowSelection,
+        onPaginationChange: setPagination,
         state: {
             sorting,
             columnFilters,
             columnVisibility,
             rowSelection,
+            pagination
         },
     })
 
@@ -117,6 +124,7 @@ export function ProductsTable() {
                 <div className="flex-1 text-sm text-muted-foreground">
                     {table.getFilteredSelectedRowModel().rows.length} of{" "}
                     {table.getFilteredRowModel().rows.length} row(s) selected.
+
                 </div>
                 <div className="space-x-2">
                     <Button
@@ -127,6 +135,23 @@ export function ProductsTable() {
                     >
                         Previous
                     </Button>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <Button variant="outline" size="sm">
+                                {table.getState().pagination.pageSize} <ChevronDown />
+                            </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                            {[10, 25, 50, 100].map((size) => (
+                                <DropdownMenuItem
+                                    key={size}
+                                    onClick={() => table.setPageSize(size)}
+                                >
+                                    {size}
+                                </DropdownMenuItem>
+                            ))}
+                        </DropdownMenuContent>
+                    </DropdownMenu>
                     <Button
                         variant="outline"
                         size="sm"

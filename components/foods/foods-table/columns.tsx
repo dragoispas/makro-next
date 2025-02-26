@@ -54,17 +54,17 @@ export const columns: ColumnDef<Product>[] = [
     {
         accessorKey: "protein",
         header: "Protein (g)",
-        cell: ({ row }) => <div>{row.original.macronutrients.protein}g</div>,
+        cell: ({ row }) => <div>{row.original.macronutrients.protein}</div>,
     },
     {
         accessorKey: "fat",
         header: "Fat (g)",
-        cell: ({ row }) => <div>{row.original.macronutrients.fat}g</div>,
+        cell: ({ row }) => <div>{row.original.macronutrients.fat}</div>,
     },
     {
         accessorKey: "carbs",
         header: "Carbs (g)",
-        cell: ({ row }) => <div>{row.original.macronutrients.carbs}g</div>,
+        cell: ({ row }) => <div>{row.original.macronutrients.carbs}</div>,
     },
     {
         accessorKey: "source",
