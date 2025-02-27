@@ -78,6 +78,9 @@ export default function AuthForm() {
                 <Button variant="outline" className="w-full flex items-center justify-center gap-2">
                     <FcGoogle className="w-5 h-5" /> Sign in with Google
                 </Button>
+                <CardDescription className="text-center mt-4">
+                    Don't have an account? <Link href="/register" className="underline">Sign up</Link>
+                </CardDescription>
             </CardContent>
         </Card>
     );
