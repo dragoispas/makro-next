@@ -1,7 +1,6 @@
 'use client';
 
 import { DiaryTable } from "@/components/diary/dary-table/data-table";
-import { mockFoodEntries } from "../mockData";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import MacroBreakdown from "@/components/diary/macro-breakdown";
@@ -11,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { DiaryDrawer } from "@/components/diary/diary-drawer/drawer";
 import { DiaryDatePicker } from "@/components/diary/diary-date-picker";
 import { NotesDrawer } from "@/components/diary/notes-drawer/drawer";
+import { mockFoodEntries } from "@/app/mockData";
 
 const DiaryPage = () => {
     const [date, setDate] = React.useState<Date>(new Date());

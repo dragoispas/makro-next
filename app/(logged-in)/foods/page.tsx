@@ -1,5 +1,3 @@
-import { DiaryTable } from "@/components/diary/dary-table/data-table";
-import { mockFoodEntries } from "../mockData";
 import { ProductsTable } from "@/components/foods/foods-table/products.table";
 
 const FoodsPage = () => {
