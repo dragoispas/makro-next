@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
 
-        {/* <LoggedInLayout>{children}</LoggedInLayout> */}
+        {/* <LoggedOutLayout>{children}</LoggedOutLayout> */}
         <LoggedInLayout>{children}</LoggedInLayout>
 
       </body>

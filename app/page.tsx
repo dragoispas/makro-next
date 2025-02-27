@@ -73,7 +73,7 @@ export default function Home() {
         />
       </Card> */}
       <Label>Label</Label>
-      <CheckboxWithText info="Click this checkbox">Checkbox</CheckboxWithText>
+      <CheckboxWithText label="Checkbox" info="Click this checkbox" />
       <Input />
       {/* <DateTimePicker24h /> */}
       <Select>

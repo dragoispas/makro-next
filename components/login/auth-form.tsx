@@ -1,6 +1,6 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -9,6 +9,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { FcGoogle } from "react-icons/fc";
+import { Checkbox } from "../ui/checkbox";
+import { CheckboxWithText } from "../ui/checkbox-with-text";
+import Link from "next/link";
 
 const authSchema = z.object({
     email: z.string().email("Invalid email"),
@@ -26,9 +29,10 @@ export default function AuthForm() {
     };
 
     return (
-        <Card className="max-w-md mx-auto p-6">
+        <Card className="max-w-md mx-auto mt-20 p-6">
             <CardHeader>
                 <CardTitle className="text-2xl font-bold text-center">Welcome!</CardTitle>
+                <CardDescription className="text-center">Sign in with your email and password</CardDescription>
             </CardHeader>
             <CardContent>
                 <Form {...form}>
@@ -59,12 +63,16 @@ export default function AuthForm() {
                                 </FormItem>
                             )}
                         />
+                        <div className="flex justify-between align-middle">
+                            <CheckboxWithText label="Remember me" />
+                            <Link href={"/login"} className="text-sm font-semibold">Forgot password</Link>
+                        </div>
                         <Button type="submit" className="w-full">Log In</Button>
                     </form>
                 </Form>
                 <div className="flex items-center my-4">
                     <div className="flex-1 border-t" />
-                    <span className="px-2 text-sm text-gray-500">or</span>
+                    <CardDescription className="px-2">or</CardDescription>
                     <div className="flex-1 border-t" />
                 </div>
                 <Button variant="outline" className="w-full flex items-center justify-center gap-2">
