@@ -13,7 +13,7 @@ import {
     getSortedRowModel,
     useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+import { ArrowUpDown, ChevronDown, MoreHorizontal, Plus } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
@@ -30,6 +30,7 @@ import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMe
 import { mockProducts } from "@/app/mockData"
 import { columns } from "./columns"
 import { Pagination } from "@/components/ui/pagination"
+import Link from "next/link"
 
 export function ProductsTable() {
     const [sorting, setSorting] = React.useState<SortingState>([])
@@ -37,8 +38,8 @@ export function ProductsTable() {
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
     const [rowSelection, setRowSelection] = React.useState({})
     const [pagination, setPagination] = React.useState({
-        pageIndex: 0, // Start at first page
-        pageSize: 10, // Default rows per page
+        pageIndex: 0,
+        pageSize: 10,
     });
 
     const table = useReactTable({
@@ -73,6 +74,16 @@ export function ProductsTable() {
                     }
                     className="max-w-sm"
                 />
+                <Link href="/foods/create" className="ml-4"><Button variant={"outline"}>
+                    <Plus /> Create food
+                </Button></Link>
+
+                {Object.keys(rowSelection).length > 1 && (
+                    <Link href="/foods/create" className="ml-4"><Button variant={"outline"}>
+                        <Plus /> Create recipe
+                    </Button></Link>
+                )}
+
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                         <Button variant="outline" className="ml-auto">
@@ -124,7 +135,6 @@ export function ProductsTable() {
                 <div className="flex-1 text-sm text-muted-foreground">
                     {table.getFilteredSelectedRowModel().rows.length} of{" "}
                     {table.getFilteredRowModel().rows.length} row(s) selected.
-
                 </div>
                 <div className="space-x-2">
                     <Button

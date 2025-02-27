@@ -91,7 +91,9 @@ export const columns: ColumnDef<Product>[] = [
                             <Link href={`/foods/${product.id}`}>View food</Link>
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Create custom "{row.original.name.toLowerCase()}"</DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                            <Link href={`/foods/create?productId=${product.id}`}>Create custom "{row.original.name.toLowerCase()}"</Link>
+                        </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
             );
