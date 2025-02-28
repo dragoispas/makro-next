@@ -1,9 +1,8 @@
-import AuthForm from "@/components/auth/auth-form"
-import Link from "next/link";
+import LoginCard from "@/components/auth/login/login-card";
 
 const LoginPage = () => {
     return (
-        <AuthForm />
+        <LoginCard />
     )
 }
 

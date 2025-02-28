@@ -1,9 +1,8 @@
-import RegisterForm from "@/components/auth/register-form";
-import Link from "next/link";
+import RegisterCard from "@/components/auth/register/register-card";
 
 const RegisterPage = () => {
     return (
-        <RegisterForm />
+        <RegisterCard />
     )
 }
 
