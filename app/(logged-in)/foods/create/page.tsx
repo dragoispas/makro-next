@@ -1,14 +1,11 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
 import { mockProducts } from "@/app/mockData";
 import CreateFoodForm from "@/components/foods/create/create-food-form";
 
-export default function CreateFoodPage() {
-    const searchParams = useSearchParams();
-    const productIdParam = searchParams.get("productId");
+interface Props {
+    searchParams: { productId: number }
+}
 
-    const productId = productIdParam ? Number(productIdParam) : undefined;
+export default function CreateFoodPage({ searchParams: { productId } }: Props) {
 
     return (
         <div>

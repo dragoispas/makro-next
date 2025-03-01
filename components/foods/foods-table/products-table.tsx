@@ -13,7 +13,7 @@ import {
     getSortedRowModel,
     useReactTable,
 } from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, MoreHorizontal, Plus } from "lucide-react"
+import { ChevronDown, Plus } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,11 +26,15 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
-import { mockProducts } from "@/app/mockData"
 import { columns } from "./columns"
 import Link from "next/link"
+import { Product } from "@/app/types"
 
-export function ProductsTable() {
+interface Props {
+    products: Product[];
+}
+
+export function ProductsTable({ products }: Props) {
     const [sorting, setSorting] = React.useState<SortingState>([])
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([])
     const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({})
@@ -41,7 +45,7 @@ export function ProductsTable() {
     });
 
     const table = useReactTable({
-        data: mockProducts,
+        data: products,
         columns,
         onSortingChange: setSorting,
         onColumnFiltersChange: setColumnFilters,

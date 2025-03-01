@@ -1,12 +1,13 @@
-import { ProductsTable } from "@/components/foods/foods-table/products.table";
+import { ProductsTable } from "@/components/foods/foods-table/products-table";
 
-const FoodsPage = () => {
+const FoodsPage = async () => {
+    const res = await fetch('http://localhost:3000/api/products');
+    const products = await res.json();
     return (
         <div>
             <div className="container mx-auto py-10">
-                <ProductsTable />
+                <ProductsTable products={products} />
             </div>
-
         </div>
     );
 }

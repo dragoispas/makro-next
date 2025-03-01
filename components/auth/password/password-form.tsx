@@ -7,7 +7,6 @@ import { Form, FormField, FormItem, FormControl, FormMessage } from "@/component
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { useSearchParams } from "next/navigation";
 
 const authSchema = z
     .object({
@@ -19,9 +18,11 @@ const authSchema = z
         path: ["confirmPassword"], // Attach error to confirmPassword field
     });
 
-export default function PasswordForm() {
-    const searchParams = useSearchParams();
-    const email = searchParams.get("email");
+interface Props {
+    email?: string
+}
+
+export default function PasswordForm({ email }: Props) {
 
     const form = useForm({
         resolver: zodResolver(authSchema),

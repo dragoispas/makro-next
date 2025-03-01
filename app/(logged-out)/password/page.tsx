@@ -1,8 +1,12 @@
 import PasswordCard from "@/components/auth/password/password-card";
 
-const PasswordPage = () => {
+interface Props {
+    searchParams: { email: string }
+}
+
+const PasswordPage = ({ searchParams: { email } }: Props) => {
     return (
-        <PasswordCard />
+        <PasswordCard email={email} />
     )
 }
 
