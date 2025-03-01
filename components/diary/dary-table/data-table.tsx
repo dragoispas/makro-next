@@ -41,9 +41,21 @@ export function DiaryTable({ data }: { data?: FoodEntry[] }) {
 
     const table = useReactTable({
         data: foodEntryRows,
-        columns,
+        columns: columns({ onDelete }),
         getCoreRowModel: getCoreRowModel(),
     });
+
+    async function onDelete(id: number) {
+
+        const response = await fetch(`/api/food-entries/${id}`, {
+            method: 'DELETE',
+        });
+
+        const data = await response.json();
+        console.log('Food entry deleted', data);
+
+        //todo some error handling
+    }
 
     return (
         <Card>

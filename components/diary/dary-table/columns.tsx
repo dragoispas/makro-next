@@ -13,7 +13,11 @@ export type FoodEntryRow = {
     calories: string
 }
 
-export const columns: ColumnDef<FoodEntryRow>[] = [
+interface Props {
+    onDelete: (id: number) => void
+}
+
+export const columns = ({ onDelete }: Props): ColumnDef<FoodEntryRow>[] => [
     {
         accessorKey: "food",
         header: "Food",
@@ -42,7 +46,7 @@ export const columns: ColumnDef<FoodEntryRow>[] = [
         id: "actions",
         enableHiding: false,
         cell: ({ row }) => {
-            const foodEntry = row.original
+            const foodEntry = row.original;
 
             return (
                 <DropdownMenu>
@@ -56,10 +60,12 @@ export const columns: ColumnDef<FoodEntryRow>[] = [
                         <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuItem>Edit</DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Delete</DropdownMenuItem>
+                        <DropdownMenuItem onClick={() => onDelete(foodEntry.id)}>
+                            Delete
+                        </DropdownMenuItem>
                     </DropdownMenuContent>
                 </DropdownMenu>
-            )
+            );
         },
     },
-]
+];

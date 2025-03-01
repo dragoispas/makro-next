@@ -6,8 +6,9 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from "@/components/ui/select";
 import { DateTimePicker24h } from "@/components/ui/date-time-picker";
 import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
-import { Product } from "@/app/types";
+import { FoodEntry, Product } from "@/app/types";
 import { ProductCard } from "./product-card";
+import { format } from "date-fns";
 
 const formSchema = z.object({
     timestamp: z.date(),
@@ -28,9 +29,23 @@ export function AddFoodForm({ selectedProduct }: Props) {
             servingSize: selectedProduct.servingSizes[0].name,
         },
     });
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        // api call
-        console.log(values)
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        const newFoodEntry: FoodEntry = {
+            id: Math.random() * 100,
+            product: selectedProduct,
+            quantity: parseFloat(values.quantity),
+            time: format(values.timestamp, "yyyy-MM-dd'T'HH:mm:ssXXX")
+        }
+
+        const response = await fetch('/api/food-entries', {
+            method: 'POST',
+            body: JSON.stringify(newFoodEntry),
+        });
+
+        const data = await response.json();
+        console.log('Food entry added:', data);
+
+        //todo some error handling
     }
 
 
@@ -93,7 +108,7 @@ export function AddFoodForm({ selectedProduct }: Props) {
                             )}
                         />
                     </div>
-                    <Button disabled={!form.watch("quantity") || parseInt(form.watch("quantity")) < 1} type="submit">Add Product</Button>
+                    <Button disabled={!form.watch("quantity") || parseInt(form.watch("quantity")) < 1} type="submit">Add to diary</Button>
                 </form>
             </Form>
         </>

@@ -8,8 +8,8 @@ export async function GET(request: NextRequest) {
 }
 
 // POST a new food entry
-export async function POST(req: Request) {
-    const newEntry: FoodEntry = await req.json();
+export async function POST(request: Request) {
+    const newEntry: FoodEntry = await request.json();
     mockFoodEntries.push(newEntry);
     return NextResponse.json(newEntry, { status: 201 });
 }
