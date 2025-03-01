@@ -35,7 +35,7 @@ const NavigationMenu = () => {
                         href="/foods"
                         className={cn(
                             "text-sm font-medium text-primary opacity-75",
-                            currentPath === "/foods" ? "opacity-100" : "text-muted-foreground",
+                            currentPath.includes("/foods") ? "opacity-100" : "text-muted-foreground",
                             "hover:opacity-100"
                         )}
                     >

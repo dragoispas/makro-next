@@ -23,7 +23,7 @@ export default function RegisterForm() {
 
     const onSubmit = (values: z.infer<typeof authSchema>) => {
         console.log("Form Submitted", values);
-        router.push("/password"); // Navigate only if form is valid
+        router.push(`/password?email=${form.watch("email")}`); // Navigate only if form is valid
     };
 
     return (

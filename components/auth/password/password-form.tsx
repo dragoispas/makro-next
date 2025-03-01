@@ -7,6 +7,7 @@ import { Form, FormField, FormItem, FormControl, FormMessage } from "@/component
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useSearchParams } from "next/navigation";
 
 const authSchema = z
     .object({
@@ -19,13 +20,16 @@ const authSchema = z
     });
 
 export default function PasswordForm() {
+    const searchParams = useSearchParams();
+    const email = searchParams.get("email");
+
     const form = useForm({
         resolver: zodResolver(authSchema),
         defaultValues: { password: "", confirmPassword: "" },
     });
 
     const onSubmit = (values: z.infer<typeof authSchema>) => {
-        console.log("Form Submitted", values);
+        console.log("Form Submitted", { ...values, email });
     };
 
     return (

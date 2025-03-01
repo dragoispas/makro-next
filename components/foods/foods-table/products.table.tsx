@@ -16,7 +16,6 @@ import {
 import { ArrowUpDown, ChevronDown, MoreHorizontal, Plus } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import {
     Table,
@@ -29,7 +28,6 @@ import {
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
 import { mockProducts } from "@/app/mockData"
 import { columns } from "./columns"
-import { Pagination } from "@/components/ui/pagination"
 import Link from "next/link"
 
 export function ProductsTable() {
@@ -72,21 +70,11 @@ export function ProductsTable() {
                     onChange={(event) =>
                         table.getColumn("name")?.setFilterValue(event.target.value)
                     }
-                    className="max-w-sm"
+                    className="max-w-sm min-w-32"
                 />
-                <Link href="/foods/create" className="ml-4"><Button variant={"outline"}>
-                    <Plus /> Create food
-                </Button></Link>
-
-                {Object.keys(rowSelection).length > 1 && (
-                    <Link href="/foods/create" className="ml-4"><Button variant={"outline"}>
-                        <Plus /> Create recipe
-                    </Button></Link>
-                )}
-
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="ml-auto">
+                        <Button variant="outline" className="ml-4">
                             Columns <ChevronDown />
                         </Button>
                     </DropdownMenuTrigger>
@@ -106,6 +94,17 @@ export function ProductsTable() {
                             ))}
                     </DropdownMenuContent>
                 </DropdownMenu>
+
+                <div className="flex ml-auto">
+                    {Object.keys(rowSelection).length > 1 && (
+                        <Link href="/foods/create" className="ml-4"><Button>
+                            <Plus /> Create recipe
+                        </Button></Link>
+                    )}
+                    <Link href="/foods/create" className="ml-4"><Button>
+                        <Plus /> Create food
+                    </Button></Link>
+                </div>
             </div>
             <div className="rounded-md border">
                 <Table>
