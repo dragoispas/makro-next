@@ -14,22 +14,22 @@ interface Props {
 }
 
 export const ProductCard = ({ selectedProduct, quantity, multiplier }: Props) => {
-    const macronutrients = useMemo(() =>
+    const nutrients = useMemo(() =>
         quantity && multiplier ? calculatedFoodDetails(selectedProduct, quantity, multiplier) :
             {
-                calories: selectedProduct.calories,
-                protein: selectedProduct.macronutrients.protein,
-                fat: selectedProduct.macronutrients.fat,
-                carbs: selectedProduct.macronutrients.carbs,
+                calories: selectedProduct.nutrients.calories,
+                protein: selectedProduct.nutrients.protein,
+                fat: selectedProduct.nutrients.fat,
+                carbs: selectedProduct.nutrients.carbs,
             },
         [selectedProduct, quantity, multiplier]);
-    const macroProcentage = useMemo(() => getMacroProcentages({ protein: macronutrients.protein, fat: macronutrients.fat, carbs: macronutrients.carbs }), [selectedProduct])
+    const macroProcentage = useMemo(() => getMacroProcentages({ protein: nutrients.protein, fat: nutrients.fat, carbs: nutrients.carbs }), [selectedProduct])
 
 
     const chartData = [
-        { name: "Protein", value: selectedProduct.macronutrients.protein, fill: "var(--color-protein)" },
-        { name: "Fat", value: selectedProduct.macronutrients.fat, fill: "var(--color-fat)" },
-        { name: "Carbs", value: selectedProduct.macronutrients.carbs, fill: "var(--color-carbs)" },
+        { name: "Protein", value: selectedProduct.nutrients.protein, fill: "var(--color-protein)" },
+        { name: "Fat", value: selectedProduct.nutrients.fat, fill: "var(--color-fat)" },
+        { name: "Carbs", value: selectedProduct.nutrients.carbs, fill: "var(--color-carbs)" },
     ];
 
     const chartConfig = {
@@ -59,7 +59,7 @@ export const ProductCard = ({ selectedProduct, quantity, multiplier }: Props) =>
                     <div className="w-40 flex justify-end">
                         <div className="w-28 h-28 relative">
                             <div className="flex flex-col items-center justify-center absolute w-full h-full">
-                                <div className="text-sm font-semibold translate-y-0.5">{displayValue(macronutrients.calories)}</div>
+                                <div className="text-sm font-semibold translate-y-0.5">{displayValue(nutrients.calories)}</div>
                                 <div className="text-sm font-semibold -translate-y-0.5">kcal</div>
                             </div>
                             <ChartContainer config={chartConfig} className="w-full h-full">
@@ -85,21 +85,21 @@ export const ProductCard = ({ selectedProduct, quantity, multiplier }: Props) =>
                             <div className="flex gap-2 align-center w-full">
                                 <div className="w-2 h-2 bg-macro-protein rounded-full self-center"></div>
                                 <div className="flex gap-2 align-center w-full">
-                                    <p className="text-sm font-semibold">Protein: {displayValue(macronutrients.protein)} g</p>
+                                    <p className="text-sm font-semibold">Protein: {displayValue(nutrients.protein)} g</p>
                                     <p className="text-sm font-semibold text-macro-protein">({macroProcentage.protein}%)</p>
                                 </div>
                             </div>
                             <div className="flex gap-2 align-center">
                                 <div className="w-2 h-2 bg-macro-fat rounded-full self-center"></div>
                                 <div className="flex gap-1.5 align-center">
-                                    <p className="text-sm font-semibold">Fat: {displayValue(macronutrients.fat)} g</p>
+                                    <p className="text-sm font-semibold">Fat: {displayValue(nutrients.fat)} g</p>
                                     <p className="text-sm font-semibold text-macro-fat">({macroProcentage.fat}%)</p>
                                 </div>
                             </div>
                             <div className="flex gap-2 align-center">
                                 <div className="w-2 h-2 bg-macro-carbs rounded-full self-center"></div>
                                 <div className="flex gap-1.5 align-center">
-                                    <p className="text-sm font-semibold">Carbs: {displayValue(macronutrients.carbs)} g</p>
+                                    <p className="text-sm font-semibold">Carbs: {displayValue(nutrients.carbs)} g</p>
                                     <p className="text-sm font-semibold text-macro-carbs">({macroProcentage.carbs}%)</p>
                                 </div>
                             </div>

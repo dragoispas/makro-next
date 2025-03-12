@@ -50,22 +50,22 @@ export const columns: ColumnDef<Product>[] = [
     {
         accessorKey: "calories",
         header: "Calories",
-        cell: ({ row }) => <div>{row.original.calories} kcal</div>,
+        cell: ({ row }) => <div>{row.original.nutrients.calories} kcal</div>,
     },
     {
         accessorKey: "protein",
         header: "Protein (g)",
-        cell: ({ row }) => <div>{row.original.macronutrients.protein}</div>,
+        cell: ({ row }) => <div>{row.original.nutrients.protein}</div>,
     },
     {
         accessorKey: "fat",
         header: "Fat (g)",
-        cell: ({ row }) => <div>{row.original.macronutrients.fat}</div>,
+        cell: ({ row }) => <div>{row.original.nutrients.fat}</div>,
     },
     {
         accessorKey: "carbs",
         header: "Carbs (g)",
-        cell: ({ row }) => <div>{row.original.macronutrients.carbs}</div>,
+        cell: ({ row }) => <div>{row.original.nutrients.carbs}</div>,
     },
     {
         accessorKey: "source",

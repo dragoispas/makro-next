@@ -22,17 +22,17 @@ import { columns, FoodEntryRow } from "./columns"
 
 const getFoodEntryRows = (foodEntries: FoodEntry[]): FoodEntryRow[] =>
     foodEntries.map(({ id, quantity, product }) => {
-        const { name, calories, macronutrients } = product;
+        const { name, nutrients } = product;
         const format = (value: number, decimals: number, unit: string) => `${(value * quantity / 100).toFixed(decimals)} ${unit}`;
 
         return {
             id,
             food: name,
             quantity: `${quantity} g`,
-            protein: format(macronutrients.protein, 1, 'g'),
-            fat: format(macronutrients.fat, 1, 'g'),
-            carbs: format(macronutrients.carbs, 1, 'g'),
-            calories: format(calories, 0, 'kcal'),
+            protein: format(nutrients.protein, 1, 'g'),
+            fat: format(nutrients.fat, 1, 'g'),
+            carbs: format(nutrients.carbs, 1, 'g'),
+            calories: format(nutrients.calories, 0, 'kcal'),
         };
     });
 
