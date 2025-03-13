@@ -12,7 +12,7 @@ const NavigationMenu = () => {
 
     return (
         <>
-            <nav className="gap-4 p-4 sticky top-0 w-full bg-white bg-opacity-75 backdrop-blur-sm z-10">
+            <nav className="gap-4 p-4 sticky top-0 w-full bg-background bg-opacity-75 backdrop-blur-sm z-10">
                 <div className="flex gap-4 justify-center w-full relative">
                     <Link
                         href="/"
@@ -44,7 +44,7 @@ const NavigationMenu = () => {
                     >
                         Foods
                     </Link>
-                    <div className="absolute right-0">{session?.user?.email}</div>
+                    <div className="absolute right-0">{session?.user?.name || session?.user?.email}</div>
                 </div>
             </nav>
         </>

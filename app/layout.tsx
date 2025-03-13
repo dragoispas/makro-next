@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import NavigationMenu from "@/components/navigation-menu";
 import { AuthProvider } from "./auth/provider";
-
+import { SidebarMenuProvider } from "@/components/sidebar-menu";
 
 
 export const metadata: Metadata = {
@@ -19,8 +19,15 @@ export default function RootLayout({ //make navigationMenu appear only if user i
     <html lang="en">
       <body>
         <AuthProvider>
+
+
           <NavigationMenu />
-          {children}
+          <div className="flex w-full">
+            <SidebarMenuProvider >
+              {children}
+            </SidebarMenuProvider>
+          </div>
+
         </AuthProvider>
       </body>
     </html>
