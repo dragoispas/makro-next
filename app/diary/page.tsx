@@ -1,3 +1,4 @@
+
 import { DiaryTable } from "@/components/diary/dary-table/data-table";
 import React from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -19,7 +20,7 @@ const DiaryPage = async () => {
 
             <div className="flex justify-between items-center">
                 <div></div>
-                {/* <DiaryDatePicker date={new Date()} setDate={() => console.log("test")} /> */}
+                {/* <DiaryDatePicker date={date} setDate={setDate} /> */}
                 <div className="flex gap-4">
                     <DiaryDrawer />
 
